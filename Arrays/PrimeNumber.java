@@ -9,7 +9,6 @@ class PrimeNumber {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int count = 0; //곱셈과 나눗셈을 수행한 횟수
-        int numOfPrimes = 0; //찾은 소수의 개수
         int [] primes = new int[500]; //500개의 소수를 저장하기 위한 배열
         int ptr = 0; //배열에 저장된 소수의 개수 (다음에 저장할 위치)
         primes[ptr++] = 2; //2는 소수이므로 배열에 저장 primes[0] = 2, ptr = 1
@@ -17,7 +16,7 @@ class PrimeNumber {
         for(int n=3; n <= 1000; n+=2) { //3부터 1000까지의 홀수만 검사
             boolean isPrime = true; //소수 여부를 나타내는 플래그
             for(int i=1; i<ptr && primes[i]*primes[i] <= n; i++) { //이미 찾은 소수들로 나눗셈 수행
-                count+=2; //나눗셈 횟수 증가
+                count+=2; //곱셈 prime[i]*prime[i]와 나눗셈 n % prime[i] 수행(밑의 if문에서 수행)
                 if(n % primes[i] == 0) { //나누어 떨어지면 소수가 아님
                     isPrime = false;
                     break; //더 이상 검사할 필요 없음
@@ -25,16 +24,16 @@ class PrimeNumber {
             }
             if(isPrime) { //소수이면 배열에 저장
                 primes[ptr++] = n;
-                numOfPrimes++; //찾은 소수 개수 증가
+                count++; //곱셈 횟수 증가 primes[i]*primes[i] > n 가 되었을 때 prime[i]*prime[i] 곱셈 1회 수행
             }
         }
-        numOfPrimes++; //2도 소수이므로 1을 더해줌
+
         
         for(int i=0; i<ptr; i++){
             System.out.print(primes[i]+ " "); //찾은 소수 출력
         }
         System.out.println();
-        System.out.println("찾은 소수의 개수: " + numOfPrimes); 
+        System.out.println("찾은 소수의 개수: " + ptr); 
         System.out.println("곱셈과 나눗셈을 수행한 횟수: " + count);
     }
 }
