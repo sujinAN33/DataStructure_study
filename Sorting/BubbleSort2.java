@@ -22,7 +22,7 @@ class BubbleSort2{
         }
     }
 
-     public static void main(String[] args){
+    public static void main(String[] args){
         Scanner stdIn = new Scanner(System.in);
         System.out.println("버블정렬(버전2)");
         System.out.print("요솟수: ");
