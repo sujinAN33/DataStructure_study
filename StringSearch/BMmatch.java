@@ -17,7 +17,7 @@ class BMmatch {
         // 검색
         while (pt < txtLen) { // txt의 길이만큼 반복
             pp = patLen - 1; // pat의 마지막 문자부터 검사
-            while (txt.charAt(pt) == pat.charAt(pp)) { //일치하면
+            while (txt.charAt(pt) == pat.charAt(pp)) { 
                 if (pp == 0) // pat의 첫 문자까지 일치하면
                     return pt; // 검색 성공
                 pp--;
